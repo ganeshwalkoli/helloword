@@ -1,0 +1,20 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - echo Installing Node.js...
+      - curl -sL https://rpm.nodesource.com/setup_16.x | sudo bash -
+      - sudo yum install -y nodejs
+  pre_build:
+    commands:
+      - echo Preparing to build...
+  build:
+    commands:
+      - echo Installing dependencies...
+      - cd app
+      - npm install
+artifacts:
+  files:
+    - '**/*'          # Include all files for deployment
+  base-directory: app # Root directory for the app
+
